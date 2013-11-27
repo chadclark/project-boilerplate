@@ -13,7 +13,7 @@ module.exports = function(grunt) {
 					style: 'expanded'
 				},
 				files: {
-					'assets/css/build/main.css': 'assets/css/scss/main.scss'
+					'assets/build/css/main.css': 'assets/css/scss/main.scss'
 				}
 			}
 		},
@@ -21,7 +21,7 @@ module.exports = function(grunt) {
 		// Minify CSS
 		cssmin: {
 			files: {
-				'assets/css/build/main.css': 'assets/css/scss/main.scss'
+				'assets/build/css/main.css': 'assets/css/scss/main.scss'
 			}
 		},
 
@@ -30,15 +30,7 @@ module.exports = function(grunt) {
 			beforeconcat: ['assets/js/*.js']
 		},
 
-		// Process JS Includes
-		// includereplace: {
-		// 	dist: {
-		// 		src: 'assets/js/plugins.js',
-		// 		dest: 'assets/js/plugins.processed.js',
-		// 		expand: false,
-		// 		cwd: 'assets/js'
-		// 	}
-		// },
+		// Bake-in Includes
 		bake: {
 			build: {
 				files: {
@@ -54,15 +46,15 @@ module.exports = function(grunt) {
 					'assets/js/plugins.processed.js',
 					'assets/js/main.js'
 				],
-				dest: 'assets/js/build/production.js'
+				dest: 'assets/build/js/production.js'
 			}
 		},
 
 		// Uglify JS
 		uglify: {
 			build: {
-				src: 'assets/js/build/production.js',
-				dest: 'assets/js/build/production.min.js'
+				src: 'assets/build/js/production.js',
+				dest: 'assets/build/js/production.min.js'
 			}
 		},
 
@@ -73,7 +65,7 @@ module.exports = function(grunt) {
 					expand: true,
 					cwd: 'assets/img/',
 					src: ['**/*.{png,jpg,gif}'],
-					dest: 'assets/img/'
+					dest: 'assets/build/img/'
 				}]
 			}
 		},
