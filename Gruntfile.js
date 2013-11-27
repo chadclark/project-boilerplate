@@ -27,16 +27,23 @@ module.exports = function(grunt) {
 
 		// Lint JS
 		jshint: {
-			beforeconcat: ['assets/js/*.js', '!assets/js/plugins.js']
+			beforeconcat: ['assets/js/*.js']
 		},
 
 		// Process JS Includes
-		includereplace: {
-			dist: {
-				src: 'assets/js/plugins.js',
-				dest: 'assets/js/plugins.processed.js',
-				expand: false,
-				cwd: 'assets/js'
+		// includereplace: {
+		// 	dist: {
+		// 		src: 'assets/js/plugins.js',
+		// 		dest: 'assets/js/plugins.processed.js',
+		// 		expand: false,
+		// 		cwd: 'assets/js'
+		// 	}
+		// },
+		bake: {
+			build: {
+				files: {
+					"assets/js/plugins.processed.js": "assets/js/plugins.js"
+				}
 			}
 		},
 
@@ -78,7 +85,7 @@ module.exports = function(grunt) {
 			},
 			scripts: {
 				files: ['assets/js/**/*.js'],
-				tasks: ['includereplace','concat', 'uglify', 'jshint'],
+				tasks: ['bake','concat', 'uglify', 'jshint'],
 				options: {
 					spawn: false
 				}
