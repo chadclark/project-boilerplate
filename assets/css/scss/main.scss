@@ -1,11 +1,11 @@
 // Normalize
-@import "_libs/normalize/normalize";
+// @import "_libs/normalize/normalize";
 
-// Neat
+// Bourbon
 @import "_libs/bourbon/bourbon";
 
-// Bourbon w Neat
-@import "_libs/neat_w_bourbon/neat";
+// Neat with Bourbon
+@import "_libs/neat/neat";
 
 // Variables and such
 @import "variables";

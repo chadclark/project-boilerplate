@@ -1,9 +1,0 @@
-[submodule "assets/css/scss/_libs/bourbon"]
-	path = assets/css/scss/_libs/bourbon
-	url = git@github.com:thoughtbot/bourbon.git
-[submodule "assets/css/scss/_libs/neat_w_bourbon"]
-	path = assets/css/scss/_libs/neat_w_bourbon
-	url = git@github.com:thoughtbot/neat.git
-[submodule "assets/css/scss/_libs/normalize"]
-	path = assets/css/scss/_libs/normalize
-	url = git@github.com:kristerkari/normalize.scss.git

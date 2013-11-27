@@ -1,0 +1,13 @@
+#!/bin/sh
+
+echo "Initialization sequence activated..."
+
+cd assets/css/scss/_libs/                                    && \
+bourbon install                                              && \
+neat install                                                 && \
+cd ../../../../                                              && \
+npm install
+
+echo "Project successfully installed!"
+
+git status
