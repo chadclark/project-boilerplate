@@ -2,11 +2,43 @@
 
 echo "Initialization sequence activated..."
 
-cd assets/css/scss/_libs/               && \
-bourbon install                         && \
-neat install                            && \
-cd ../../../../                         && \
-npm install                             && \
+# Remove .git from cloned repo.
+rm -rf .git/                                                                     && \
+
+# Initialize fresh repo.
+git init                                                                         && \
+
+# Change directory to assets/css/scss/_libs/
+cd assets/css/scss/_libs/                                                        && \
+
+# Install Bourbon. Yum.
+bourbon install                                                                  && \
+
+# Install Neat.
+neat install                                                                     && \
+
+# Clone normalize.scss (https://github.com/kristerkari/normalize.scss)
+git clone git@github.com:kristerkari/normalize.scss.git ./normalize              && \
+
+# Change directory to normalize
+cd normalize/                                                                    && \
+
+# Remove .git from normalize.scss repo.
+rm -rf .git/                                                                     && \
+
+# Remove .gitignore from normalize.scss repo.
+rm -rf .gitignore                                                                && \
+
+# Remove README.md from normalize.scss repo.
+rm -rf README.md                                                                 && \
+
+# Change directory back to project root.
+cd ../../../../../                                                               && \
+
+# Run npm install.
+npm install                                                                      && \
+
+# Self destruct.
 rm $0
 
 echo "Project successfully installed!"

@@ -1,2 +1,11 @@
-.DS_Store
+# Sublime Text Project Files #
+*.sublime-*
+
+# Sass Cache #
 *.sass-cache*
+
+# OS generated files #
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db

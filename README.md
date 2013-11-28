@@ -11,4 +11,6 @@
 
 To setup a project, run the following commands:
 
-`./setup`
+	$ git clone git@github.com:httpster/project-boilerplate.git your-project-folder
+	$ cd your-project-folder
+	$ ./setup
