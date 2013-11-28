@@ -8,6 +8,9 @@ rm -rf .git/                                                                    
 # Initialize fresh repo.
 git init                                                                         && \
 
+# Create _libs directory.
+mkdir assets/css/scss/_libs/                                                     && \
+
 # Change directory to assets/css/scss/_libs/
 cd assets/css/scss/_libs/                                                        && \
 
