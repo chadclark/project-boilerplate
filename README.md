@@ -2,10 +2,10 @@
 
 ## Prerequisites
 
-- Grunt
-- Sass
-- Bourbon
-- Neat
+- Grunt ([http://gruntjs.com/getting-started](http://gruntjs.com/getting-started))
+- Sass ([http://sass-lang.com/install](http://sass-lang.com/install))
+- Bourbon ([https://github.com/thoughtbot/bourbon](https://github.com/thoughtbot/bourbon))
+- Neat ([https://github.com/thoughtbot/neat](https://github.com/thoughtbot/neat))
 
 ## Installation
 
