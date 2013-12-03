@@ -14,3 +14,11 @@ To setup a project, run the following commands:
 	$ git clone git@github.com:httpster/project-boilerplate.git your-project-folder
 	$ cd your-project-folder
 	$ ./setup
+
+To start watching for changes and to start a live-reloading server, run the following command:
+
+	$ grunt
+
+To compile and optimize everything, run the following command:
+
+	$ grunt build
