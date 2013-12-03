@@ -20,17 +20,11 @@ module.exports = function(grunt) {
 		},
 		images: {
 			files: ['assets/img/**/*.{png,jpg,gif}'],
-			tasks: ['imagemin'],
-			options: {
-				spawn: false
-			}
+			tasks: ['imagemin']
 		},
 		svg: {
-			files: ['assets/img/**/*.{svg}'],
-			tasks: ['svgmin'],
-			options: {
-				spawn: false
-			}
+			files: ['assets/img/**/*.svg'],
+			tasks: ['svgmin']
 		}
 	});
 
