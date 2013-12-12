@@ -1,6 +1,7 @@
 #!/bin/sh
 
 echo "Initialization sequence activated..."
+say "Initialization sequence activated"
 
 # Remove .git from cloned repo.
 rm -rf .git/                                                                     && \
@@ -45,3 +46,4 @@ npm install                                                                     
 rm $0
 
 echo "Project successfully installed!"
+say "Project successfully installed!"

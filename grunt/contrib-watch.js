@@ -11,12 +11,15 @@ module.exports = function(grunt) {
 				spawn: false
 			}
 		},
-		css: {
+		scss: {
 			files: ['assets/css/scss/**/*.scss'],
 			tasks: ['sass', 'cssmin'],
 			options: {
-				spawn: false
+				livereload: false
 			}
+		},
+		css: {
+			files: ['assets/build/css/main.css']
 		},
 		images: {
 			files: ['assets/img/**/*.{png,jpg,gif}'],
