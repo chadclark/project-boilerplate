@@ -15,10 +15,10 @@ mkdir assets/build/img/															 && \
 mkdir assets/build/js/															 && \
 
 # Create _libs directory.
-mkdir assets/css/scss/_libs/                                                     && \
+mkdir assets/scss/_libs/                                                     	 && \
 
 # Change directory to assets/css/scss/_libs/
-cd assets/css/scss/_libs/                                                        && \
+cd assets/scss/_libs/                                                        	 && \
 
 # Install Bourbon. Yum.
 bourbon install                                                                  && \
@@ -42,7 +42,7 @@ rm -rf .gitignore                                                               
 rm -rf README.md                                                                 && \
 
 # Change directory back to project root.
-cd ../../../../../                                                               && \
+cd ../../../../                                                                  && \
 
 # Run npm install.
 npm install                                                                      && \
