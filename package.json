@@ -1,18 +1,24 @@
 {
-  "name": "grunt-codekitkillah",
+  "name": "grunt-boilerplate",
   "version": "1.0.0",
-  "dependencies": {},
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-uglify": "~0.2.2",
-    "grunt-contrib-concat": "~0.3.0",
-    "grunt-bake": "~0.3.3",
-    "grunt-contrib-sass": "~0.5.0",
-    "grunt-contrib-imagemin": "~0.4.0",
-    "grunt-svgmin": "~0.3.0",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-contrib-connect": "~0.5.0",
-    "grunt-contrib-cssmin": "~0.7.0",
-    "grunt-contrib-jshint": "~0.7.2"
+    "grunt": "~0.4.2",
+    "grunt-bake": "*",
+    "grunt-concurrent": "*",
+    "grunt-contrib-cssmin": "*",
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-connect": "*",
+    "grunt-contrib-imagemin": "0.4.1",
+    "grunt-contrib-jshint": "*",
+    "grunt-notify": "*",
+    "grunt-contrib-sass": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-newer": "*",
+    "grunt-svgmin": "*",
+    "load-grunt-config": "*"
+  },
+  "dependencies": {
+    "time-grunt": "*"
   }
 }

@@ -9,6 +9,11 @@ rm -rf .git/                                                                    
 # Initialize fresh repo.
 git init                                                                         && \
 
+# Create build directories.
+mkdir assets/build/css/															 && \
+mkdir assets/build/img/															 && \
+mkdir assets/build/js/															 && \
+
 # Create _libs directory.
 mkdir assets/css/scss/_libs/                                                     && \
 
