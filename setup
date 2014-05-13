@@ -4,48 +4,45 @@ echo "Initialization sequence activated..."
 say "Initialization sequence activated"
 
 # Remove .git from cloned repo.
-rm -rf .git/                                                                     && \
+rm -rf .git/ 																&& \
 
 # Initialize fresh repo.
-git init                                                                         && \
+git init 																	&& \
 
 # Create build directories.
-mkdir assets/build/css/															 && \
-mkdir assets/build/img/															 && \
-mkdir assets/build/js/															 && \
+mkdir public/assets/build/css/												&& \
+mkdir public/assets/build/img/												&& \
+mkdir public/assets/build/js/												&& \
 
 # Create _libs directory.
-mkdir assets/scss/_libs/                                                     	 && \
+mkdir public/assets/scss/_libs/ 											&& \
 
 # Change directory to assets/css/scss/_libs/
-cd assets/scss/_libs/                                                        	 && \
+cd public/assets/scss/_libs/ 												&& \
 
 # Install Bourbon. Yum.
-bourbon install                                                                  && \
+bourbon install 															&& \
 
 # Install Neat.
-neat install                                                                     && \
+neat installed																&& \
 
 # Clone normalize.scss (https://github.com/kristerkari/normalize.scss)
-git clone git@github.com:kristerkari/normalize.scss.git ./normalize              && \
+git clone https://github.com/kristerkari/normalize.scss.git ./normalize 	&& \
 
 # Change directory to normalize
-cd normalize/                                                                    && \
+cd normalize/ 																&& \
 
 # Remove .git from normalize.scss repo.
-rm -rf .git/                                                                     && \
+rm -rf .git/ 																&& \
 
 # Remove .gitignore from normalize.scss repo.
-rm -rf .gitignore                                                                && \
-
-# Remove README.md from normalize.scss repo.
-rm -rf README.md                                                                 && \
+rm -rf .gitignore 															&& \
 
 # Change directory back to project root.
-cd ../../../../                                                                  && \
+cd ../../../../../ 															&& \
 
 # Run npm install.
-npm install                                                                      && \
+npm install 																&& \
 
 # Self destruct.
 rm $0

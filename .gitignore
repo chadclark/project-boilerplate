@@ -1,11 +1,21 @@
 # Sublime Text Project Files #
+##############################
 *.sublime-*
 
-# Sass Cache #
-*.sass-cache*
-
 # OS generated files #
+######################
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Sass Cache #
+##############
+public/*.sass-cache*
 
 # Node Modules #
-node_modules
+################
+public/node_modules
