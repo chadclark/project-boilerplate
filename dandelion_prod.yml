@@ -23,6 +23,7 @@ revision_file: .revision
 
 # These files (from Git) will not be uploaded during a deploy
 exclude:
+    - .editorconfig
     - .gitignore
     - dandelion.yml
     - dandelion_prod.yml
