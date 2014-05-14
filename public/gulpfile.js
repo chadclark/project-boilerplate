@@ -48,7 +48,7 @@ gulp.task('scripts', function() {
 
 // SCSS
 gulp.task('styles', function() {
-	gulp.src(paths.scss)
+	gulp.src(paths.scss + 'main.scss')
 		.pipe(sass({
 			sourcemap: true,
 			style: 'compressed'
