@@ -5,7 +5,9 @@
 	"main": "gulpfile.js",
 	"devDependencies": {
 		"gulp"				: "~3.*",
+		"gulp-changed"		: "*",
 		"gulp-concat"		: "*",
+		"gulp-debug"		: "*",
 		"gulp-file-include"	: "*",
 		"gulp-imagemin"		: "*",
 		"gulp-jshint"		: "*",
@@ -15,6 +17,7 @@
 		"gulp-rename"		: "*",
 		"gulp-ruby-sass"	: "*",
 		"gulp-uglify"		: "*",
-		"gulp-watch"		: "*"
+		"gulp-watch"		: "*",
+		"imagemin-pngcrush"	: "*"
 	}
 }
