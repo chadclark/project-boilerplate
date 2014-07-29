@@ -1,10 +1,11 @@
+
 // Set Plugin Variables
 var gulp = require('gulp') // Gulp!
 	changed 	= require('gulp-changed'), // Watch for changed files
 	concat		= require('gulp-concat'), // Concat
 	debug 		= require('gulp-debug'), // Debug
-	fileInclude	= require('gulp-file-include'), // File Include
 	imagemin 	= require('gulp-imagemin'), // Image Minifying
+	include     = require('gulp-include'), // Include
 	jshint		= require('gulp-jshint'), // JS Hinting
 	livereload 	= require('gulp-livereload'), // Live Reload
 	notify		= require('gulp-notify'), // Notify
@@ -31,7 +32,7 @@ function handleError(err) {
 
 // JS Hint
 gulp.task('jshint', function() {
-	gulp.src(paths.js + '*.js')
+	gulp.src(paths.js + 'main.js')
 		.pipe(jshint())
 		.pipe(jshint.reporter('default'))
 });
@@ -39,7 +40,7 @@ gulp.task('jshint', function() {
 // File Include
 gulp.task('fileInclude', function() {
 	gulp.src(paths.js + 'plugins.js')
-		.pipe(fileInclude())
+		.pipe(include())
 		.pipe(gulp.dest(paths.js + 'combined/'))
 });
 
@@ -49,6 +50,7 @@ gulp.task('scripts', function() {
 		paths.js + 'combined/plugins.js',
 		paths.js + 'main.js'
 	])
+		.on('error', handleError)
 		.pipe(concat('production.js'))
 		.pipe(gulp.dest(paths.js))
 		.pipe(rename('production.min.js'))
@@ -61,7 +63,7 @@ gulp.task('scripts', function() {
 gulp.task('styles', function() {
 	gulp.src(paths.scss + 'main.scss')
 		.pipe(sass({
-			sourcemap: true,
+			sourcemap: false,
 			style: 'compressed'
 		}))
 		//.pipe(debug({verbose: true}))
@@ -72,15 +74,20 @@ gulp.task('styles', function() {
 
 // Image Minifying
 gulp.task('imagemin', function() {
-	var imgSrc = paths.img + '**/*',
+	var imgSrc = paths.img + '/**/*.*',
 		imgDst = paths.build + 'img/'
 	;
 
 	gulp.src(imgSrc)
-		.pipe(changed(imgSrc))
+		//.pipe(changed(imgSrc))
 		.pipe(imagemin({
 			progressive: true,
-			svgoPlugins: [{removeViewBox: false}],
+			svgoPlugins: [
+				{ collapseGroups            : false },				
+				{ removeUnknownsAndDefaults : false },
+				{ removeUselessStrokeAndFill: false },
+				{ removeViewBox             : false }
+			],
 			use: [pngcrush()]
 		}))
 		.pipe(gulp.dest(imgDst))

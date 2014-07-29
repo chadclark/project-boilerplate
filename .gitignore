@@ -19,3 +19,7 @@ public/*.sass-cache*
 # Node Modules #
 ################
 public/node_modules
+
+# DB Sync #
+###########
+getdb.sh

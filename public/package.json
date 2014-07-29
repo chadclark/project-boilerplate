@@ -1,23 +1,23 @@
 {
-	"name": "gulp-boilerplate",
-	"version": "1.0.0",
-	"description": "Big Gulipin'",
-	"main": "gulpfile.js",
-	"devDependencies": {
-		"gulp"				: "~3.*",
-		"gulp-changed"		: "*",
-		"gulp-concat"		: "*",
-		"gulp-debug"		: "*",
-		"gulp-file-include"	: "*",
-		"gulp-imagemin"		: "*",
-		"gulp-jshint"		: "*",
-		"gulp-livereload"	: "*",
-		"gulp-newer"		: "*",
-		"gulp-notify"		: "*",
-		"gulp-rename"		: "*",
-		"gulp-ruby-sass"	: "*",
-		"gulp-uglify"		: "*",
-		"gulp-watch"		: "*",
-		"imagemin-pngcrush"	: "*"
-	}
+  "name": "gulp-boilerplate",
+  "version": "1.0.0",
+  "description": "Big Gulipin'",
+  "main": "gulpfile.js",
+  "devDependencies": {
+	"gulp"             : "~3.*",
+	"gulp-changed"     : "*",
+	"gulp-concat"      : "*",
+	"gulp-debug"       : "*",
+	"gulp-include"     : "*",
+	"gulp-imagemin"    : "*",
+	"gulp-jshint"      : "*",
+	"gulp-livereload"  : "*",
+	"gulp-newer"       : "*",
+	"gulp-notify"      : "*",
+	"gulp-rename"      : "*",
+	"gulp-ruby-sass"   : "0.5.0",
+	"gulp-uglify"      : "*",
+	"gulp-watch"       : "*",
+	"imagemin-pngcrush": "*"
+  }
 }
