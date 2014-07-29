@@ -29,8 +29,8 @@ To start watching for changes and to start a live-reloading server, run the foll
 Project Boilerplate uses the awesome [Gulp.js](http://gulpjs.com) for automating tasks like compiling Sass, linting and concatenating javascript, and automatically optimizing images. Here's a complete list of the Gulp.js plugins included:
 
 - __[gulp-concat](https://www.npmjs.org/package/gulp-concat/)__ - Combines the `plugins.js` and `main.js` files into one `production.js` file
-- __[gulp-file-include](https://www.npmjs.org/package/gulp-file-include/)__ - Includes separate plugin files in `public/assets/js/plugins.js`
 - __[gulp-imagemin](https://www.npmjs.org/package/gulp-imagemin/)__ - Minifies PNG, JPEG, GIF and SVG images
+- __[gulp-include](https://www.npmjs.org/package/gulp-include/)__ - Includes separate plugin files in `public/assets/js/plugins.js`
 - __[gulp-jshint](https://www.npmjs.org/package/gulp-jshint/)__ - Checks Javascript files for errors using JSHint
 - __[gulp-livereload](https://www.npmjs.org/package/gulp-livereload/)__ - This will reload the browser when certain files are updated (you will need to use a LiveReload browser extension)
 - __[gulp-notify](https://www.npmjs.org/package/gulp-notify/)__ - This will send a notification message when certain tasks are completed
