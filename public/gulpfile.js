@@ -12,16 +12,15 @@ var gulp = require('gulp') // Gulp!
 	pngcrush 	= require('imagemin-pngcrush'); // PNG Crush
 	rename		= require('gulp-rename'), // Rename
 	sass		= require('gulp-ruby-sass'), // Sass (We have to use Ruby Sass until LibSass supports 3.3)
-	uglify		= require('gulp-uglify'), // Uglify JS
-	watch		= require('gulp-watch') // Watch
+	uglify		= require('gulp-uglify') // Uglify JS
 ;
 
 // Set asset path variables
 var paths = {
-	build: './assets/build/',
-	js: './assets/js/',
-	scss: './assets/scss/',
-	img: './assets/img/'
+	build: 'assets/build/',
+	js: 'assets/js/',
+	scss: 'assets/scss/',
+	img: 'assets/img/'
 };
 
 // Error Logging
@@ -33,6 +32,7 @@ function handleError(err) {
 // JS Hint
 gulp.task('jshint', function() {
 	gulp.src(paths.js + 'main.js')
+		.on('error', handleError)
 		.pipe(jshint())
 		.pipe(jshint.reporter('default'))
 });
@@ -50,7 +50,6 @@ gulp.task('scripts', function() {
 		paths.js + 'combined/plugins.js',
 		paths.js + 'main.js'
 	])
-		.on('error', handleError)
 		.pipe(concat('production.js'))
 		.pipe(gulp.dest(paths.js))
 		.pipe(rename('production.min.js'))
@@ -74,12 +73,12 @@ gulp.task('styles', function() {
 
 // Image Minifying
 gulp.task('imagemin', function() {
-	var imgSrc = paths.img + '/**/*.*',
-		imgDst = paths.build + 'img/'
+	var imgSrc = paths.img + '**/*',
+		imgDst = paths.build + 'img'
 	;
 
 	gulp.src(imgSrc)
-		//.pipe(changed(imgSrc))
+		.pipe(changed(imgDst))
 		.pipe(imagemin({
 			progressive: true,
 			svgoPlugins: [
