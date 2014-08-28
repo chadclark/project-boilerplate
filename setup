@@ -4,15 +4,15 @@ echo "Initialization sequence activated..."
 say "Initialization sequence activated"
 
 # Remove .git from cloned repo.
-rm -rf .git/ && \
-
-# Initialize fresh repo.
-git init 																	&& \
+rm -rf .git/ 																&& \
 
 # Create build directories.
 mkdir public/assets/build/css/												&& \
 mkdir public/assets/build/img/												&& \
 mkdir public/assets/build/js/												&& \
+
+# Go into public directory
+cd public																	&& \
 
 # Run npm install.
 npm install 																&& \
