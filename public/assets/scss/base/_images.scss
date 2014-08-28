@@ -1,0 +1,48 @@
+//  $$$$$$\
+//  \_$$  _|
+//    $$ |  $$$$$$\$$$$\   $$$$$$\   $$$$$$\   $$$$$$\   $$$$$$$\
+//    $$ |  $$  _$$  _$$\  \____$$\ $$  __$$\ $$  __$$\ $$  _____|
+//    $$ |  $$ / $$ / $$ | $$$$$$$ |$$ /  $$ |$$$$$$$$ |\$$$$$$\
+//    $$ |  $$ | $$ | $$ |$$  __$$ |$$ |  $$ |$$   ____| \____$$\
+//  $$$$$$\ $$ | $$ | $$ |\$$$$$$$ |\$$$$$$$ |\$$$$$$$\ $$$$$$$  |
+//  \______|\__| \__| \__| \_______| \____$$ | \_______|\_______/
+//                                  $$\   $$ |
+//                                  \$$$$$$  |
+//                                   \______/
+
+// Fluid Images
+img {
+	max-width: 100%;
+}
+
+// Non-fluid images if you specify `width` and/or `height` attributes.
+img[width],
+img[height] {
+	max-width: none;
+}
+
+// Rounded images
+.img--round {
+	border-radius: 50%
+}
+
+.img--right {
+	float: right;
+	margin-bottom: $base-spacing-unit;
+	margin-left: $base-spacing-unit;
+}
+.img--left {
+	float: left;
+	margin: {
+		right: $base-spacing-unit;
+		bottom: $base-spacing-unit;
+	}
+}
+.img--center {
+	display: block;
+	margin: {
+		right: auto;
+		bottom: $base-spacing-unit;
+		left: auto;
+	}
+}

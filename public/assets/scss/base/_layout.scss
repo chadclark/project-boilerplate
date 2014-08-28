@@ -1,0 +1,56 @@
+//  $$\                                                $$\
+//  $$ |                                               $$ |
+//  $$ |      $$$$$$\  $$\   $$\  $$$$$$\  $$\   $$\ $$$$$$\
+//  $$ |      \____$$\ $$ |  $$ |$$  __$$\ $$ |  $$ |\_$$  _|
+//  $$ |      $$$$$$$ |$$ |  $$ |$$ /  $$ |$$ |  $$ |  $$ |
+//  $$ |     $$  __$$ |$$ |  $$ |$$ |  $$ |$$ |  $$ |  $$ |$$\
+//  $$$$$$$$\\$$$$$$$ |\$$$$$$$ |\$$$$$$  |\$$$$$$  |  \$$$$  |
+//  \________|\_______| \____$$ | \______/  \______/    \____/
+//                     $$\   $$ |
+//                     \$$$$$$  |
+//                      \______/
+
+.container {
+	@include outer-container;
+
+	&.container--outer {
+		padding: {
+			left: em($gutter * 3) !important;
+			right: em($gutter * 3) !important;
+		}
+
+		@include media($widescreen) {
+			padding: {
+				left: em($gutter * 5) !important;
+				right: em($gutter * 5) !important;
+			}
+		}
+
+		@include media($large) {
+			padding: {
+				left: em($gutter * 4) !important;
+				right: em($gutter * 4) !important;
+			}
+		}
+	}
+}
+
+section {
+	@include clearfix;
+}
+
+.is-hidden {
+	max-height: 0;
+	margin: 0;
+	overflow: hidden;
+	opacity: 0;
+	padding: 0;
+}
+
+.is-visible {
+	max-height: em(999);
+	margin: inherit;
+	opacity: 1.0;
+	overflow: auto;
+	padding: inherit;
+}
