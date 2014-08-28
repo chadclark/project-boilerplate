@@ -1,0 +1,30 @@
+{
+  "name": "Project Boilerplate",
+  "version": "1.0",
+  "authors": [
+    "Chad Clark <chad@chadjclark.com>"
+  ],
+  "description": "A project boilerplate",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+      "**/.*",
+      "node_modules",
+      "bower_components",
+      "test",
+      "tests"
+  ],
+  "dependencies": {
+    "bourbon"          : "*",
+    "neat"             : "*",
+    "bitters"          : "*",
+    "refills"          : "*",
+    "jquery"           : "*",
+    "modernizr"        : "*",
+    "normalize-css"    : "*",
+    "selectivizr"      : "*",
+    "respond"          : "*",
+    "fitvids"          : "*",
+    "html5-boilerplate": "*"
+  }
+}

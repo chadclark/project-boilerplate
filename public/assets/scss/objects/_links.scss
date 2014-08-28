@@ -1,0 +1,42 @@
+.link {
+
+	// ------------------------------------------------------
+	// Text & Arrow
+	// ------------------------------------------------------
+	
+	&--arrow {
+		@include font-proxima-nova-soft();
+		font-weight: 600;
+		text-decoration: none;
+
+		&:after {
+			$width: 8;
+			$height: 11;
+			@include svg-bg(icon-arrow-link-blue-right, 0, 0, no-repeat);
+			@include transition(all 0.3s ease-in-out);
+			content: '';
+			display: inline-block;
+			height: $height+px;
+			margin-left: em(8);
+			width: $width+px;
+		}
+
+		&:hover {
+
+			&:after {
+				@include transform( translateX(3px) );
+			}
+		}
+	}
+}
+
+.filetype {
+	@include pad( 0 em(10) );
+	margin-left: em(5);
+	background-color: palette(gray, lighter);
+	border-radius: 5px;
+	color: palette(gray, mid);
+	display: inline-block;
+	font-size: em($base-font-size - 5);
+	text-transform: uppercase;
+}
