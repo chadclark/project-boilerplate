@@ -19,7 +19,7 @@
     "neat"             : "*",
     "bitters"          : "*",
     "refills"          : "*",
-    "jquery"           : "*",
+    "jquery"           : "~1.*",
     "modernizr"        : "*",
     "normalize-css"    : "*",
     "selectivizr"      : "*",

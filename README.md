@@ -6,16 +6,25 @@ Project Boilerplate is an automated tool to help get a new website project up an
 
 - Gulp ([http://gulpjs.com/](http://gulpjs.com/))
 - Sass ([http://sass-lang.com/install](http://sass-lang.com/install))
-- Bourbon ([https://github.com/thoughtbot/bourbon](https://github.com/thoughtbot/bourbon))
-- Neat ([https://github.com/thoughtbot/neat](https://github.com/thoughtbot/neat))
+- Bower ([http://bower.io/](http://bower.io/))
 
 ## Installation
 
-To setup a project, run the following commands:
+### Cloning
 
-	$ git clone https://github.com/chadclark/project-boilerplate.git your-project-folder
-	$ cd your-project-folder
-	$ ./setup
+```
+$ git clone https://github.com/chadclark/project-boilerplate.git your-project-folder
+$ cd your-project-folder
+$ ./setup
+```
+	
+### Downloading .zip
+
+1. [Download project-boilerplate.zip](https://github.com/chadclark/project-boilerplate/archive/master.zip)
+2. In terminal, `cd` to the unzipped project directory
+3. Run `./setup`
+
+The `setup` script will create necessary directories, install necessary Node modules and install necessary Bower components.
 
 To start watching for changes and to start a live-reloading server, run the following command from your project's `public` directory:
 
@@ -28,6 +37,7 @@ To start watching for changes and to start a live-reloading server, run the foll
 
 Project Boilerplate uses the awesome [Gulp.js](http://gulpjs.com) for automating tasks like compiling Sass, linting and concatenating javascript, and automatically optimizing images. Here's a complete list of the Gulp.js plugins included:
 
+- __[gulp-changed](https://www.npmjs.org/package/gulp-changed)__ - Only pass through changed files. This is used to make sure we only compress images/SVGs if they have been updated.
 - __[gulp-concat](https://www.npmjs.org/package/gulp-concat/)__ - Combines the `plugins.js` and `main.js` files into one `production.js` file
 - __[gulp-imagemin](https://www.npmjs.org/package/gulp-imagemin/)__ - Minifies PNG, JPEG, GIF and SVG images
 - __[gulp-include](https://www.npmjs.org/package/gulp-include/)__ - Includes separate plugin files in `public/assets/js/plugins.js`
@@ -37,7 +47,6 @@ Project Boilerplate uses the awesome [Gulp.js](http://gulpjs.com) for automating
 - __[gulp-rename](https://www.npmjs.org/package/gulp-rename/)__ - Used to rename the `production.js` to `production.min.js` file after it has been uglifed
 - __[gulp-ruby-sass](https://www.npmjs.org/package/gulp-ruby-sass/)__ - This compiles the Sass files ([gulp-sass](https://www.npmjs.org/package/gulp-sass/) uses the faster libsass, but libsass does not yet support Sass 3.3 features) 	
 - __[gulp-uglify](https://www.npmjs.org/package/gulp-uglify/)__ - This compresses the Javascript files
-- __[gulp-watch](https://www.npmjs.org/package/gulp-watch/)__ - This will "watch" for certain events to happen (example, an updated .scss file) and then trigger a task(s) (like compiling Sass, compressing the CSS file and live reloading your browser)
 
 ## What Goes Where
 
