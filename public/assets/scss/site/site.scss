@@ -1,0 +1,61 @@
+//   $$$$$$\  $$\   $$\               $$\ $$\      $$\ $$\       $$\           $$\
+//  $$  __$$\ \__|  $$ |              $$ |$$ | $\  $$ |\__|      $$ |          $$ |
+//  $$ /  \__|$$\ $$$$$$\    $$$$$$\  $$ |$$ |$$$\ $$ |$$\  $$$$$$$ | $$$$$$\  $$ |
+//  \$$$$$$\  $$ |\_$$  _|  $$  __$$\ $$ |$$ $$ $$\$$ |$$ |$$  __$$ |$$  __$$\ $$ |
+//   \____$$\ $$ |  $$ |    $$$$$$$$ |\__|$$$$  _$$$$ |$$ |$$ /  $$ |$$$$$$$$ |\__|
+//  $$\   $$ |$$ |  $$ |$$\ $$   ____|    $$$  / \$$$ |$$ |$$ |  $$ |$$   ____|
+//  \$$$$$$  |$$ |  \$$$$  |\$$$$$$$\ $$\ $$  /   \$$ |$$ |\$$$$$$$ |\$$$$$$$\ $$\
+//   \______/ \__|   \____/  \_______|\__|\__/     \__|\__| \_______| \_______|\__|
+//
+//
+//
+
+// Border Box all the things!
+*,
+*:before,
+*:after {
+	@include box-sizing(border-box);
+}
+
+*:focus {
+	outline: 0;
+	outline-style: none !important;
+}
+
+html {
+	font-size: $base-font-size + px;
+	line-height: $base-line-height;
+
+	@include media($medium) {
+		font-size: ($base-font-size - 1) + px;
+	}
+
+	@include media($small) {
+		font-size: ($base-font-size - 2) + px;
+	}
+}
+
+body {
+	@include font-feature-settings("liga", "kern", "pnum", "case");
+	color: $default-body-color;
+	font-family: $base-font-family;
+}
+
+a {
+	@include transition( all 0.2s ease-in-out );
+	color: $default-link-color;
+
+	&:hover {
+		color: $default-link-color-hover;
+	}
+}
+
+// Use to hide things from the front-end
+.visuallyhidden,
+#areYouAwesome {
+	display: none;
+	height: 0;
+	margin: 0;
+	max-height: 0;
+	overflow: hidden;
+}

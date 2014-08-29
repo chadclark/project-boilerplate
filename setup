@@ -6,43 +6,19 @@ say "Initialization sequence activated"
 # Remove .git from cloned repo.
 rm -rf .git/ 																&& \
 
-# Initialize fresh repo.
-git init 																	&& \
-
 # Create build directories.
 mkdir public/assets/build/css/												&& \
 mkdir public/assets/build/img/												&& \
 mkdir public/assets/build/js/												&& \
 
-# Create _libs directory.
-mkdir public/assets/scss/_libs/ 											&& \
-
-# Change directory to assets/css/scss/_libs/
-cd public/assets/scss/_libs/ 												&& \
-
-# Install Bourbon. Yum.
-bourbon install 															&& \
-
-# Install Neat.
-neat install																&& \
-
-# Clone normalize.scss (https://github.com/kristerkari/normalize.scss)
-git clone https://github.com/kristerkari/normalize.scss.git ./normalize 	&& \
-
-# Change directory to normalize
-cd normalize/ 																&& \
-
-# Remove .git from normalize.scss repo.
-rm -rf .git/ 																&& \
-
-# Remove .gitignore from normalize.scss repo.
-rm -rf .gitignore 															&& \
-
-# Change directory back to public root.
-cd ../../../../																&& \
+# Go into public directory
+cd public																	&& \
 
 # Run npm install.
 npm install 																&& \
+
+# Install Bower Packages
+bower install 																&& \
 
 # Go back to root
 cd ../																		&& \

@@ -18,9 +18,10 @@ var gulp = require('gulp') // Gulp!
 // Set asset path variables
 var paths = {
 	build: 'assets/build/',
-	js: 'assets/js/',
-	scss: 'assets/scss/',
-	img: 'assets/img/'
+	js   : 'assets/js/',
+	scss : 'assets/scss/',
+	img  : 'assets/img/',
+	bower: 'bower_components/'
 };
 
 // Error Logging
@@ -28,6 +29,20 @@ function handleError(err) {
 	console.log(err.toString());
 	this.emit('end');
 }
+
+// Copy non-compiled JS files to /build/js/vendor folder.
+// You must run this manually, it is not part of the default Gulp task.
+var filesToMove = [
+	paths.bower + 'modernizr/modernizr.js', // Modernizr
+	paths.bower + 'respond/src/respond.js', // Respond.js (IE8)
+	paths.bower + 'selectivizr/selectivizr.js', // Selectivizr (IE8)
+	paths.bower + 'jquery/dist/jquery.min.js' // jQuery (1.x branch for IE8 compatibility)
+];
+
+gulp.task('jscopy', function() {
+	gulp.src(filesToMove)
+		.pipe(gulp.dest(paths.build + 'js/vendor/'))
+});
 
 // JS Hint
 gulp.task('jshint', function() {

@@ -37,6 +37,7 @@ exclude:
     - public/assets/js/plugins.js
     - public/assets/js/combined/plugins.js
     - public/assets/scss
+    - public/bower_components
     - public/gulpfile.js
     - public/package.json
     - public/README.md
