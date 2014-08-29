@@ -21,7 +21,7 @@
     "refills"          : "*",
     "jquery"           : "~1.*",
     "modernizr"        : "*",
-    "normalize-css"    : "*",
+    "normalize-scss"   : "*",
     "selectivizr"      : "*",
     "respond"          : "*",
     "fitvids"          : "*",
