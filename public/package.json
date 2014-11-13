@@ -15,7 +15,7 @@
 	"gulp-newer"       : "*",
 	"gulp-notify"      : "*",
 	"gulp-rename"      : "*",
-	"gulp-ruby-sass"   : "0.5.0",
+	"gulp-ruby-sass"   : "*",
 	"gulp-uglify"      : "*",
 	"imagemin-pngcrush": "*"
   }

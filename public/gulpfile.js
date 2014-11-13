@@ -77,7 +77,7 @@ gulp.task('scripts', function() {
 gulp.task('styles', function() {
 	gulp.src(paths.scss + 'main.scss')
 		.pipe(sass({
-			sourcemap: false,
+			sourcemap: true,
 			style: 'compressed'
 		}))
 		//.pipe(debug({verbose: true}))
@@ -114,7 +114,7 @@ gulp.task('watch', function() {
 	gulp.watch(paths.js + 'plugins.js', ['fileInclude', 'scripts']);
 	gulp.watch(paths.scss + '**/*.scss', ['styles']);
 	gulp.watch(paths.img + '**/*.*', ['imagemin']);
-	gulp.watch(paths.build + '**').on('change', function(file) {
+	gulp.watch([paths.build + '**', '!' + paths.build + 'css/*.css.map']).on('change', function(file) {
 		livereload().changed(file.path);
 	}); // Live reload if anything in /assets/build changes
 });
