@@ -17,7 +17,6 @@
   "dependencies": {
     "bourbon"          : "*",
     "neat"             : "*",
-    "bitters"          : "*",
     "refills"          : "*",
     "jquery"           : "~1.*",
     "modernizr"        : "*",
