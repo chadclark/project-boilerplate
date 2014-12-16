@@ -114,9 +114,8 @@ gulp.task('watch', function() {
 	gulp.watch(paths.js + 'plugins.js', ['fileInclude', 'scripts']);
 	gulp.watch(paths.scss + '**/*.scss', ['styles']);
 	gulp.watch(paths.img + '**/*.*', ['imagemin']);
-	gulp.watch([paths.build + '**', '!' + paths.build + 'css/*.css.map']).on('change', function(file) {
-		livereload().changed(file.path);
-	}); // Live reload if anything in /assets/build changes
+	livereload.listen();
+	gulp.watch([paths.build + '**', '!' + paths.build + 'css/*.css.map']).on('change', livereload.changed); // Live reload if anything in /assets/build changes that isn't a css.map file
 });
 
 // Default Task

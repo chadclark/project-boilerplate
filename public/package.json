@@ -4,7 +4,7 @@
   "description": "Big Gulipin'",
   "main": "gulpfile.js",
   "devDependencies": {
-	"gulp"             : "~3.*",
+	"gulp"             : "*",
 	"gulp-changed"     : "*",
 	"gulp-concat"      : "*",
 	"gulp-debug"       : "*",
