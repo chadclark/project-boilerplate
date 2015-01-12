@@ -75,16 +75,16 @@ gulp.task('scripts', function() {
 
 // SCSS
 gulp.task('styles', function() {
-	gulp.src(paths.scss + 'main.scss')
-		.pipe(sass({
-			sourcemap: true,
-			style: 'compressed'
-		}))
-		//.pipe(debug({verbose: true}))
-		.on('error', handleError)
-		.pipe(gulp.dest(paths.build + 'css/'))
-		.pipe(notify('SCSS Processed'))
+	return sass(paths.scss + 'main.scss', {
+		sourcemaps: false,
+		style: 'compressed'
+	})
+	//.pipe(debug({verbose: true}))
+	.on('error', function (err) { console.log(err.message); })
+	.pipe(gulp.dest(paths.build + 'css/'))
+	.pipe(notify('SCSS Processed'))
 });
+
 
 // Image Minifying
 gulp.task('imagemin', function() {
@@ -97,7 +97,7 @@ gulp.task('imagemin', function() {
 		.pipe(imagemin({
 			progressive: true,
 			svgoPlugins: [
-				{ collapseGroups            : false },				
+				{ collapseGroups            : false },
 				{ removeUnknownsAndDefaults : false },
 				{ removeUselessStrokeAndFill: false },
 				{ removeViewBox             : false }
@@ -115,7 +115,7 @@ gulp.task('watch', function() {
 	gulp.watch(paths.scss + '**/*.scss', ['styles']);
 	gulp.watch(paths.img + '**/*.*', ['imagemin']);
 	livereload.listen();
-	gulp.watch([paths.build + '**', '!' + paths.build + 'css/*.css.map']).on('change', livereload.changed); // Live reload if anything in /assets/build changes that isn't a css.map file
+	gulp.watch([paths.build + '**', '!' + paths.build + 'css/*.css.map']).on('change', livereload.changed); // Live reload if anything in /assets/build changes
 });
 
 // Default Task
