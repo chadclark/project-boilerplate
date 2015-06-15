@@ -1,7 +1,7 @@
 {
   "name": "gulp-boilerplate",
   "version": "1.0.0",
-  "description": "Big Gulipin'",
+  "description": "Big Gulpin'",
   "main": "gulpfile.js",
   "devDependencies": {
 	"gulp"             : "*",
@@ -14,8 +14,10 @@
 	"gulp-livereload"  : "*",
 	"gulp-newer"       : "*",
 	"gulp-notify"      : "*",
+	"gulp-plumber"     : "*",
 	"gulp-rename"      : "*",
-	"gulp-ruby-sass"   : "git://github.com/sindresorhus/gulp-ruby-sass#rw/1.0",
+	"gulp-sass"        : "*",
+	"gulp-sourcemaps"  : "*",
 	"gulp-uglify"      : "*",
 	"imagemin-pngcrush": "*"
   }
