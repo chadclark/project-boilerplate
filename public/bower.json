@@ -20,6 +20,6 @@
     "jquery"        : "~2.*",
     "modernizr"     : "*",
     "normalize-scss": "*",
-    "fitvids"       : "*",
+    "fitvids"       : "*"
   }
 }
