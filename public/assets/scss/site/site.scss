@@ -10,19 +10,8 @@
 //
 //
 
-// Border Box all the things!
-*,
-*:before,
-*:after {
-	@include box-sizing(border-box);
-}
-
-*:focus {
-	outline: 0;
-	outline-style: none !important;
-}
-
 html {
+	box-sizing: border-box;
 	font-size: $base-font-size + px;
 	line-height: $line-height-ratio;
 
@@ -33,6 +22,18 @@ html {
 	@include media($small) {
 		font-size: ($base-font-size - 2) + px;
 	}
+}
+
+// Border Box all the things!
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+*:focus {
+	outline: 0;
+	outline-style: none !important;
 }
 
 body {

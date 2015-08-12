@@ -15,15 +15,11 @@
       "tests"
   ],
   "dependencies": {
-    "bourbon"          : "*",
-    "neat"             : "*",
-    "refills"          : "*",
-    "jquery"           : "~1.*",
-    "modernizr"        : "*",
-    "normalize-scss"   : "*",
-    "selectivizr"      : "*",
-    "respond"          : "*",
-    "fitvids"          : "*",
-    "html5-boilerplate": "*"
+    "bourbon"       : "*",
+    "neat"          : "*",
+    "jquery"        : "~2.*",
+    "modernizr"     : "*",
+    "normalize-scss": "*",
+    "fitvids"       : "*"
   }
 }
