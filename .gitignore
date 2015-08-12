@@ -14,11 +14,11 @@ Thumbs.db
 
 # Sass Cache #
 ##############
-public/*.sass-cache*
+*.sass-cache*
 
 # Node Modules #
 ################
-public/node_modules
+node_modules
 
 # DB Sync #
 ###########
