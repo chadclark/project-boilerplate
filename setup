@@ -7,21 +7,15 @@ say "Initialization sequence activated"
 rm -rf .git/ 																&& \
 
 # Create build directories.
-mkdir public/assets/build/css/												&& \
-mkdir public/assets/build/img/												&& \
-mkdir public/assets/build/js/												&& \
-
-# Go into public directory
-cd public																	&& \
+mkdir public/assets/css/													&& \
+mkdir public/assets/img/													&& \
+mkdir public/assets/js/														&& \
 
 # Run npm install.
 npm install 																&& \
 
 # Install Bower Packages
 bower install 																&& \
-
-# Go back to root
-cd ../																		&& \
 
 # Self destruct.
 rm $0
