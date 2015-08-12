@@ -26,7 +26,7 @@ $ ./setup
 
 The `setup` script will create necessary directories, install necessary Node modules and install necessary Bower components.
 
-To start watching for changes and to start a live-reloading server, run the following command from your project's `public` directory:
+To start watching for changes and to start a live-reloading server, run the following command from your project's root directory:
 
 	$ gulp
 
@@ -66,12 +66,10 @@ The "source" asset files are unminifed and uncompressed - they are meant to be r
 'Source' assets files hierarchy:
 
 ~~~
-public
- - assets
-   - css
-   - img
-   - js
-   - scss
+src
+ - img
+ - js
+ - scss
 ~~~
 
 ### Build Files
@@ -82,10 +80,9 @@ These files are minified, combined, uglified, etc. The goal for these files is t
 ~~~
 public
  - assets
-   - build
-     - css
-     - img
-     - js
+   - css
+   - img
+   - js
 ~~~
 
 ## Bourbon, Neat and Normalize
