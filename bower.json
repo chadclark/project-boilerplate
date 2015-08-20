@@ -1,10 +1,10 @@
 {
   "name": "Project Boilerplate",
-  "version": "1.0",
+  "version": "3.1",
   "authors": [
     "Chad Clark <chad@chadjclark.com>"
   ],
-  "description": "A project boilerplate",
+  "description": "A project boilerplate.",
   "license": "MIT",
   "private": true,
   "ignore": [
