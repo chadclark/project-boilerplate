@@ -7,6 +7,7 @@ var gulp = require('gulp') // Gulp!
 	include     = require('gulp-include'), // Include
 	jshint      = require('gulp-jshint'), // JS Hinting
 	livereload  = require('gulp-livereload'), // Live Reload
+	modernizr   = require('gulp-modernizr'), // Modernizr -- https://github.com/doctyper/gulp-modernizr
 	notify      = require('gulp-notify'), // Notify
 	pngcrush    = require('imagemin-pngcrush'); // PNG Crush
 	plumber     = require('gulp-plumber'); // Gulp Plumber
@@ -65,7 +66,7 @@ gulp.task('fileInclude', function() {
 });
 
 // Concatenate & Minify JS
-gulp.task('scripts', ['fileInclude'], function() {
+gulp.task('scripts', ['jshint', 'fileInclude'], function() {
 	return gulp.src([
 		paths.js + 'combined/plugins.js',
 		paths.js + 'combined/main.js'
@@ -80,6 +81,19 @@ gulp.task('scripts', ['fileInclude'], function() {
 		.pipe(sourcemaps.write())
 		.pipe(notify('JS Compiled'))
 	;
+});
+
+// Modernizr Custom File Builder -- https://github.com/doctyper/gulp-modernizr
+gulp.task('modernizr', function() {
+	gulp.src(paths.js + '*.js')
+		.pipe(modernizr('modernizr-custom.js', {
+			tests: [
+				'svg',
+				'touchevents'
+			]
+		}))
+		.pipe(uglify())
+		.pipe(gulp.dest(paths.build + 'js/'))
 });
 
 // SCSS
@@ -121,12 +135,12 @@ gulp.task('imagemin', function() {
 // Watch
 gulp.task('watch', function() {
 	gulp.watch(paths.js + 'modules/*.js', ['scripts']);
-	gulp.watch(paths.js + 'main.js', ['jshint', 'scripts']);
+	gulp.watch(paths.js + 'main.js', ['scripts']);
 	gulp.watch(paths.js + 'plugins.js', ['fileInclude', 'scripts']);
 	gulp.watch(paths.scss + '**/*.scss', ['styles']);
 	gulp.watch(paths.img + '**/*.*', ['imagemin']);
 	livereload.listen();
-	gulp.watch([paths.build + '**', '!' + paths.build + 'css/*.css.map']).on('change', livereload.changed); // Live reload if anything in /assets/build changes
+	gulp.watch([paths.build + '**', '!' + paths.build + 'css/maps/*']).on('change', livereload.changed); // Live reload if anything in /assets/build changes
 });
 
 // Default Task
