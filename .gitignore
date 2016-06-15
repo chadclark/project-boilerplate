@@ -20,6 +20,10 @@ Thumbs.db
 ################
 node_modules
 
+# Bower #
+################
+bower_components
+
 # DB Sync #
 ###########
 getdb.sh

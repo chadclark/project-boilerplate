@@ -1,0 +1,36 @@
+{
+	"root": {
+		"src": "./src",
+		"dest": "./public"
+	},
+
+	"tasks": {
+		"browserSync": {
+			"proxy": "petcitysitters.dev:3000"
+		},
+
+		"scss": {
+			"src": "scss",
+			"dest": "assets/css",
+			"autoprefixer": {
+				"browsers": [
+					"last 3 version"
+				]
+			},
+			"extensions": [
+				"css",
+				"sass",
+				"scss"
+			]
+		},
+
+		"js": {
+			"src": "js",
+			"dest": "assets/js",
+			"extensions": [
+				"js",
+				"json"
+			]
+		}
+	}
+}
