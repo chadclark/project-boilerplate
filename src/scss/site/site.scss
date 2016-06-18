@@ -14,12 +14,15 @@ html {
 	box-sizing: border-box;
 	font-size: $base-font-size + px;
 	line-height: $line-height-ratio;
+	min-height: 100%;
+	overflow-y: scroll;
+	-webkit-font-smoothing: antialiased;
 
-	@include media($medium) {
+	@include media($medium-only) {
 		font-size: ($base-font-size - 1) + px;
 	}
 
-	@include media($small) {
+	@include media($small-only) {
 		font-size: ($base-font-size - 2) + px;
 	}
 }
@@ -37,26 +40,16 @@ html {
 }
 
 body {
-	@include font-feature-settings("liga", "kern", "pnum", "case");
+	font-feature-settings: "liga", "kern", "pnum", "case";
 	color: $default-body-color;
 	font-family: $base-font-family;
 }
 
 a {
-	@include transition( all 0.2s ease-in-out );
 	color: $default-link-color;
+	transition: all 0.2s ease-in-out;
 
 	&:hover {
 		color: $default-link-color-hover;
 	}
-}
-
-// Use to hide things from the front-end
-.visuallyhidden,
-#areYouAwesome {
-	display: none;
-	height: 0;
-	margin: 0;
-	max-height: 0;
-	overflow: hidden;
 }

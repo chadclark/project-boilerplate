@@ -14,14 +14,13 @@
 // Debug Mode
 // ---------------------------------------------------------------------------------
 
-
 $debug-mode: false !default;
 
 // ---------------------------------------------------------------------------------
 // BG Image Path
 // ---------------------------------------------------------------------------------
 
-$bg-img-path: '/assets/build/img/';
+$bg-img-path: '/assets/img/';
 
 
 // ---------------------------------------------------------------------------------
@@ -41,6 +40,7 @@ $color-white: #ffffff;
 $palettes: (
 	gray: (
 		base: #AAAAAA,
+		dark: #2F2F2F,
 	),
 );
 
@@ -48,18 +48,33 @@ $palettes: (
 	@return map-get(map-get($palettes, $palette), $tone);
 }
 
-$default-body-color      : palette(gray);
-$default-link-color      : palette(gray);
-$default-link-color-hover: palette(gray);
+$default-body-color      : palette(gray, dark);
+$default-link-color      : palette(gray, dark);
+$default-link-color-hover: palette(gray, dark);
 
 // ---------------------------------------------------------------------------------
 // Breakpoints
 // ---------------------------------------------------------------------------------
 
-$widescreen: new-breakpoint(min-width 1025px); // Desktop-ish
-$large     : new-breakpoint(min-width 769px max-width 1024px); // Desktop-ish
-$medium    : new-breakpoint(min-width 480px max-width 768px); // Tablet-ish
-$small     : new-breakpoint(min-width 320px max-width 480px); // Mobileness-ish
+$landscape: new-breakpoint(orientation landscape);
+$portrait: new-breakpoint(orientation portrait);
+
+$small-up: new-breakpoint(min-width 0px);
+$small-only: new-breakpoint(max-width 479px);
+
+$medium-up: new-breakpoint(min-width 480px);
+$medium-only: new-breakpoint(min-width 480px max-width 767px);
+
+$to-large: new-breakpoint(max-width 767px);
+$large-up: new-breakpoint(min-width 768px);
+$large-only: new-breakpoint(min-width 768px max-width 1023px);
+
+$to-xlarge: new-breakpoint(max-width 1023px);
+$xlarge-up: new-breakpoint(min-width 1024px);
+$xlarge-only: new-breakpoint(min-width 1024px max-width 1199px);
+
+$to-xxlarge: new-breakpoint(max-width 1199px);
+$xxlarge-up: new-breakpoint(min-width 1200px);
 
 // ---------------------------------------------------------------------------------
 // Sizing

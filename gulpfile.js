@@ -1,21 +1,21 @@
 // Set Plugin Variables
-var gulp = require('gulp') // Gulp!
-	changed     = require('gulp-changed'), // Watch for changed files
-	concat      = require('gulp-concat'), // Concat
-	debug       = require('gulp-debug'), // Debug
-	imagemin    = require('gulp-imagemin'), // Image Minifying
-	include     = require('gulp-include'), // Include
-	jshint      = require('gulp-jshint'), // JS Hinting
-	livereload  = require('gulp-livereload'), // Live Reload
-	modernizr   = require('gulp-modernizr'), // Modernizr -- https://github.com/doctyper/gulp-modernizr
-	notify      = require('gulp-notify'), // Notify
-	pngcrush    = require('imagemin-pngcrush'); // PNG Crush
-	plumber     = require('gulp-plumber'); // Gulp Plumber
-	rename      = require('gulp-rename'), // Rename
-	sass        = require('gulp-sass'), // Sass
-	sourcemaps  = require('gulp-sourcemaps'), // Sourcemaps
-	uglify      = require('gulp-uglify') // Uglify JS
-;
+var gulp         = require('gulp'); // Gulp!
+var autoprefixer = require('gulp-autoprefixer'); // Auto-prefixer CSS
+var changed      = require('gulp-changed'); // Watch for changed files
+var concat       = require('gulp-concat'); // Concat
+var debug        = require('gulp-debug'); // Debug
+var imagemin     = require('gulp-imagemin'); // Image Minifying
+var include      = require('gulp-include'); // Include
+var jshint       = require('gulp-jshint'); // JS Hinting
+var livereload   = require('gulp-livereload'); // Live Reload
+var modernizr    = require('gulp-modernizr'); // Modernizr -- https://github.com/doctyper/gulp-modernizr
+var notify       = require('gulp-notify'); // Notify
+var pngcrush     = require('imagemin-pngcrush'); // PNG Crush
+var plumber      = require('gulp-plumber'); // Gulp Plumber
+var rename       = require('gulp-rename'); // Rename
+var sass         = require('gulp-sass'); // Sass
+var sourcemaps   = require('gulp-sourcemaps'); // Sourcemaps
+var uglify       = require('gulp-uglify'); // Uglify JS
 
 // Set asset path variables
 var paths = {
@@ -26,9 +26,26 @@ var paths = {
 	bower: 'bower_components/'
 };
 
+// Auto Prefixer Options
+var autoprefixerOptions = {
+	browsers: [
+		'last 2 versions'
+	],
+	cascade: false
+};
+
 // Error Logging
-function handleError(err) {
-	console.log(err.toString());
+var onError = function(err) {
+	notify.onError({
+		title:    "Gulp error in " + err.plugin,
+		message:  err.toString()
+	})(err);
+	this.emit('end');
+};
+
+function onError(err) {
+	notify("Something is Wrong!");
+    console.log(err.toString());
 	this.emit('end');
 }
 
@@ -60,6 +77,7 @@ gulp.task('fileInclude', function() {
 		paths.js + 'plugins.js',
 		paths.js + 'main.js'
 	])
+		.pipe(plumber({ errorHandle: onError }))
 		.pipe(include())
 		.pipe(gulp.dest(paths.js + 'combined/'))
 	;
@@ -72,7 +90,7 @@ gulp.task('scripts', ['jshint', 'fileInclude'], function() {
 		paths.js + 'combined/main.js'
 	])
 		.pipe(concat('production.js'))
-		.pipe(plumber())
+		.pipe(plumber({ errorHandle: onError }))
 		.pipe(sourcemaps.init())
 		.pipe(gulp.dest(paths.js))
 		.pipe(rename('production.min.js'))
@@ -99,11 +117,17 @@ gulp.task('modernizr', function() {
 // SCSS
 gulp.task('styles', function() {
 	gulp.src(paths.scss + 'main.scss')
-		.pipe(plumber())
 		.pipe(sourcemaps.init())
+		//.pipe(plumber({ errorHandle: onError }))
 		.pipe(sass({
+			errLogToConsole: false,
 			outputStyle: 'compressed'
 		}))
+		.on('error', function(err) {
+			notify().write(err);
+            this.emit('end');
+		})
+		.pipe(autoprefixer(autoprefixerOptions))
 		.pipe(sourcemaps.write('maps'))
 		.pipe(gulp.dest(paths.build + 'css/'))
 		.pipe(notify('SCSS Processed'))
