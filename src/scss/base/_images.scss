@@ -12,37 +12,48 @@
 
 // Fluid Images
 img {
+	display: inline-block;
+	height: auto;
+	margin: 0;
+	padding: 0;
 	max-width: 100%;
 }
 
 // Non-fluid images if you specify `width` and/or `height` attributes.
 img[width],
 img[height] {
-	max-width: none;
+	max-height: none;
 }
 
 // Rounded images
-.img--round {
-	border-radius: 50%
-}
+.img {
 
-.img--right {
-	float: right;
-	margin-bottom: $base-spacing-unit;
-	margin-left: $base-spacing-unit;
-}
-.img--left {
-	float: left;
-	margin: {
-		right: $base-spacing-unit;
-		bottom: $base-spacing-unit;
+	&.-round {
+		border-radius: 50%
 	}
-}
-.img--center {
-	display: block;
-	margin: {
-		right: auto;
-		bottom: $base-spacing-unit;
-		left: auto;
+
+	&.-right {
+		float: right;
+		margin: {
+			bottom: $gutter;
+			left: $gutter;
+		}
+	}
+
+	&.-left {
+		float: left;
+		margin: {
+			right: $gutter;
+			bottom: $gutter;
+		}
+	}
+
+	&.-center {
+		display: block;
+		margin: {
+			right: auto;
+			bottom: $gutter;
+			left: auto;
+		}
 	}
 }

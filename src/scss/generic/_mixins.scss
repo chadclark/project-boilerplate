@@ -33,20 +33,18 @@
 }
 
 // ---------------------------------------------------------------------------------
-// Hide Checkbox Input with IE Fallback
+// Hide Checkbox Input
 // ---------------------------------------------------------------------------------
 
 @mixin hide-checkbox() {
 	display: none;
-
-	@include lt-ie9() {
-		display: block;
-		position: absolute;
-		clip: rect(0 0 0 0);
-	}
 }
 
-@mixin caps($letter-spacing: em(0.5)) {
+// ---------------------------------------------------------------------------------
+// Caps
+// ---------------------------------------------------------------------------------
+
+@mixin caps($letter-spacing: 0.05em) {
 	text-transform: uppercase;
 	letter-spacing: $letter-spacing;
 }
@@ -55,9 +53,9 @@
 // 3d Transform Mixin
 // ---------------------------------------------------------------------------------
 @mixin hardware-acceleration {
-	@include transform( translate3d( 0, 0, 0 ) );
-	@include backface-visibility(hidden);
-	@include perspective(1000);
+	backface-visibility: hidden;
+	perspective: 1000;
+	transform: translate3d(0,0,0);
 }
 
 // ---------------------------------------------------------------------------------
@@ -74,7 +72,7 @@
 // ---------------------------------------------------------------------------------
 
 // Mixin for browswers that don't support .svg and also IE8 because, well, IE8.
-@mixin no-svg { .no-svg & { @content } }
+@mixin no-svg { .no-svg & { @content }; }
 
 @mixin svg-bg($filename, $pos-x: 0, $pos-y: 0, $repeat: no-repeat, $extension: '.png') {
 	background-image: url($bg-img-path + $filename + '.svg');

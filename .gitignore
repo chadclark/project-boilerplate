@@ -21,8 +21,12 @@ Thumbs.db
 node_modules
 
 # Bower Components #
-################
+####################
 bower_components
+
+# Gulp JS Includes #
+####################
+src/js/combined/*.js
 
 # DB Sync #
 ###########

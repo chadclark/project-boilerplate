@@ -24,7 +24,7 @@ $bg-img-path: '/assets/img/';
 
 
 // ---------------------------------------------------------------------------------
-// Font Path
+// Web Fonts
 // ---------------------------------------------------------------------------------
 
 $fonts-path: '/assets/fonts/';
@@ -37,54 +37,51 @@ $color-black: #000000;
 $color-white: #ffffff;
 
 // http://erskinedesign.com/blog/friendlier-colour-names-sass-maps/
-$palettes: (
+$colors: (
 	gray: (
-		base: #AAAAAA,
-		dark: #2F2F2F,
+		base    : #737373,
+		dark    : #2F2F2F,
 	),
 );
 
-@function palette($palette, $tone: 'base') {
-	@return map-get(map-get($palettes, $palette), $tone);
+@function color($color, $tone: 'base') {
+	@return map-get(map-get($colors, $color), $tone);
 }
 
-$default-body-color      : palette(gray, dark);
-$default-link-color      : palette(gray, dark);
-$default-link-color-hover: palette(gray, dark);
+$default-body-color      : color(gray, dark);
+$default-link-color      : color(gray, dark);
+$default-link-color-hover: color(gray, dark);
 
 // ---------------------------------------------------------------------------------
 // Breakpoints
 // ---------------------------------------------------------------------------------
 
-$landscape: new-breakpoint(orientation landscape);
-$portrait: new-breakpoint(orientation portrait);
+$landscape  : new-breakpoint(orientation landscape);
+$portrait   : new-breakpoint(orientation portrait);
 
-$small-up: new-breakpoint(min-width 0px);
-$small-only: new-breakpoint(max-width 479px);
+$small-up   : new-breakpoint(min-width 0px);
+$small-only : new-breakpoint(max-width 479px);
 
-$medium-up: new-breakpoint(min-width 480px);
+$medium-up  : new-breakpoint(min-width 480px);
 $medium-only: new-breakpoint(min-width 480px max-width 767px);
 
-$to-large: new-breakpoint(max-width 767px);
-$large-up: new-breakpoint(min-width 768px);
-$large-only: new-breakpoint(min-width 768px max-width 1023px);
+$to-large   : new-breakpoint(max-width 767px);
+$large-up   : new-breakpoint(min-width 768px);
+$large-only : new-breakpoint(min-width 768px max-width 1023px);
 
-$to-xlarge: new-breakpoint(max-width 1023px);
-$xlarge-up: new-breakpoint(min-width 1024px);
+$to-xlarge  : new-breakpoint(max-width 1023px);
+$xlarge-up  : new-breakpoint(min-width 1024px);
 $xlarge-only: new-breakpoint(min-width 1024px max-width 1199px);
 
-$to-xxlarge: new-breakpoint(max-width 1199px);
-$xxlarge-up: new-breakpoint(min-width 1200px);
+$to-xxlarge : new-breakpoint(max-width 1199px);
+$xxlarge-up : new-breakpoint(min-width 1200px);
 
 // ---------------------------------------------------------------------------------
 // Sizing
 // ---------------------------------------------------------------------------------
 
-$base-font-size   : 16;
-$base-line-height : 26;
-
-$base-spacing-unit: em($base-line-height);
-$half-spacing-unit: $base-spacing-unit / 2;
+$base-font-size:    16;
+$base-line-height : 1.5;
 $line-height-ratio: $base-line-height / $base-font-size;
 
 // ---------------------------------------------------------------------------------
@@ -93,4 +90,5 @@ $line-height-ratio: $base-line-height / $base-font-size;
 
 $base-font-family   : 'Helvetica Neue', Arial, Helvetica, sans-serif;
 $header-font-family : 'Helvetica Neue', Arial, Helvetica, sans-serif;
+$body-font-weight   : 400;
 $header-font-weight : 700;

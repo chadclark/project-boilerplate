@@ -12,18 +12,22 @@
 
 html {
 	box-sizing: border-box;
-	font-size: $base-font-size + px;
-	line-height: $line-height-ratio;
+	font-size: 1em;
+	line-height: 1;
 	min-height: 100%;
 	overflow-y: scroll;
 	-webkit-font-smoothing: antialiased;
 
+	@include media($xxlarge-up) {
+		font-size: 1.05em;
+	}
+
 	@include media($medium-only) {
-		font-size: ($base-font-size - 1) + px;
+		font-size: 0.9em;
 	}
 
 	@include media($small-only) {
-		font-size: ($base-font-size - 2) + px;
+		font-size: 0.8em;
 	}
 }
 

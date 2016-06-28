@@ -1,0 +1,17 @@
+.copy-block {
+
+	h1 { @include h-xxl }
+	h2 {  }
+	h3 {  }
+	h4 {  }
+	h5 {  }
+	h6 {  }
+
+	p { @include p }
+	ul { @include ul }
+	ol { @include p }
+	blockquote { @include blockquote }
+
+	img { @include img }
+	figure { @include figure }
+}

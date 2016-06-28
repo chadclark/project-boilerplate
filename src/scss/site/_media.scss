@@ -1,0 +1,15 @@
+@mixin figure {
+	@include p;
+
+	img {
+		margin: 0 !important;
+	}
+
+	figcaption {
+	
+	}
+}
+
+@mixin img {
+	@include p;
+}

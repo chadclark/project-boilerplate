@@ -14,10 +14,19 @@
 	@include outer-container;
 
 	&.-outer {
-		padding: 0 $gutter/2;
+		padding: 0 $gutter;
+
+		@include media($to-large) {
+			padding: 0 $gutter/2;
+		}
 	}
 }
 
 section {
 	@include clearfix;
+}
+
+.visually-hidden {
+	display: none;
+	visibility: hidden;
 }

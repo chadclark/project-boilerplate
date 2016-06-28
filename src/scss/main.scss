@@ -45,13 +45,12 @@
 @import "base/animations";
 @import "base/blockquotes";
 @import "base/code";
+@import "base/fonts";
 @import "base/forms";
 @import "base/images";
 @import "base/layout";
 @import "base/lists";
 @import "base/main";
-@import "base/paragraphs";
-@import "base/smallprint";
 @import "base/typography";
 @import "base/tables";
 
@@ -112,6 +111,10 @@
 //
 
 @import "site/site"; // Sitewide Styling
+@import "site/media"; // Site typography
+@import "site/typography"; // Site typography
+// Copy Block should be last
+@import "site/copy-block"; // Zero out styling by default, .copy-block holds "main content" styles -- http://cognition.happycog.com/article/expressive-type-for-copy-blocks
 
 //   $$$$$$\                        $$\     $$\
 //  $$  __$$\                       $$ |    \__|

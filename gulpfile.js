@@ -2,6 +2,7 @@
 var gulp         = require('gulp'); // Gulp!
 var autoprefixer = require('gulp-autoprefixer'); // Auto-prefixer CSS
 var changed      = require('gulp-changed'); // Watch for changed files
+var cheerio      = require('gulp-cheerio'); // Cheerio, good chap!
 var concat       = require('gulp-concat'); // Concat
 var debug        = require('gulp-debug'); // Debug
 var imagemin     = require('gulp-imagemin'); // Image Minifying
@@ -15,6 +16,8 @@ var plumber      = require('gulp-plumber'); // Gulp Plumber
 var rename       = require('gulp-rename'); // Rename
 var sass         = require('gulp-sass'); // Sass
 var sourcemaps   = require('gulp-sourcemaps'); // Sourcemaps
+var svgstore     = require('gulp-svgstore'); // Combine SVG files into one
+var svgmin       = require('gulp-svgmin'); // Compress SVG files
 var uglify       = require('gulp-uglify'); // Uglify JS
 
 // Set asset path variables
@@ -23,6 +26,7 @@ var paths = {
 	js   : 'src/js/',
 	scss : 'src/scss/',
 	img  : 'src/img/',
+	svg  : 'src/svg/',
 	bower: 'bower_components/'
 };
 
@@ -36,18 +40,9 @@ var autoprefixerOptions = {
 
 // Error Logging
 var onError = function(err) {
-	notify.onError({
-		title:    "Gulp error in " + err.plugin,
-		message:  err.toString()
-	})(err);
+	console.log(err.toString());
 	this.emit('end');
 };
-
-function onError(err) {
-	notify("Something is Wrong!");
-    console.log(err.toString());
-	this.emit('end');
-}
 
 // Copy non-compiled JS files to /build/js/vendor folder.
 // You must run this manually, it is not part of the default Gulp task.
@@ -77,7 +72,6 @@ gulp.task('fileInclude', function() {
 		paths.js + 'plugins.js',
 		paths.js + 'main.js'
 	])
-		.pipe(plumber({ errorHandle: onError }))
 		.pipe(include())
 		.pipe(gulp.dest(paths.js + 'combined/'))
 	;
@@ -90,7 +84,7 @@ gulp.task('scripts', ['jshint', 'fileInclude'], function() {
 		paths.js + 'combined/main.js'
 	])
 		.pipe(concat('production.js'))
-		.pipe(plumber({ errorHandle: onError }))
+		.pipe(plumber())
 		.pipe(sourcemaps.init())
 		.pipe(gulp.dest(paths.js))
 		.pipe(rename('production.min.js'))
@@ -106,7 +100,6 @@ gulp.task('modernizr', function() {
 	gulp.src(paths.js + '*.js')
 		.pipe(modernizr('modernizr-custom.js', {
 			tests: [
-				'svg',
 				'touchevents'
 			]
 		}))
@@ -118,7 +111,6 @@ gulp.task('modernizr', function() {
 gulp.task('styles', function() {
 	gulp.src(paths.scss + 'main.scss')
 		.pipe(sourcemaps.init())
-		//.pipe(plumber({ errorHandle: onError }))
 		.pipe(sass({
 			errLogToConsole: false,
 			outputStyle: 'compressed'
@@ -147,13 +139,38 @@ gulp.task('imagemin', function() {
 			svgoPlugins: [
 				{ collapseGroups            : false },
 				{ removeUnknownsAndDefaults : false },
-				{ removeUselessStrokeAndFill: false },
 				{ removeViewBox             : false }
 			],
 			use: [pngcrush()]
 		}))
 		.pipe(gulp.dest(imgDst))
 		.pipe(notify('Images Optimized'))
+});
+
+// SVG sprite
+gulp.task('svgSprites', function () {
+	return gulp.src(paths.svg + '*.svg')
+	.pipe(plumber())
+	.pipe(rename({prefix: 'icon-'}))
+	.pipe(cheerio({
+        run: function ($) {
+            $('[fill]').removeAttr('fill');
+        },
+        parserOptions: { xmlMode: true }
+    }))
+	.pipe(svgmin({
+		plugins: [
+			{ removeTitle: true },
+			{ removeUselessStrokeAndFill: true }
+		],
+		s2svg: {
+			pretty: true
+		}
+	}))
+	.pipe(svgstore({
+		inlineSvg: true
+	}))
+	.pipe(gulp.dest(paths.build + 'svg'));
 });
 
 // Watch
@@ -163,9 +180,10 @@ gulp.task('watch', function() {
 	gulp.watch(paths.js + 'plugins.js', ['fileInclude', 'scripts']);
 	gulp.watch(paths.scss + '**/*.scss', ['styles']);
 	gulp.watch(paths.img + '**/*.*', ['imagemin']);
+	gulp.watch(paths.svg + '**/*.svg', ['svgSprites']);
 	livereload.listen();
 	gulp.watch([paths.build + '**', '!' + paths.build + 'css/maps/*']).on('change', livereload.changed); // Live reload if anything in /assets/build changes
 });
 
 // Default Task
-gulp.task('default', ['jshint', 'styles', 'scripts', 'imagemin', 'fileInclude', 'watch']);
+gulp.task('default', ['jshint', 'styles', 'scripts', 'imagemin', 'svgSprites', 'fileInclude', 'watch']);
