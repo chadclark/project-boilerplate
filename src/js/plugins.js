@@ -1,3 +1,4 @@
+// Include jQuery first
 //= include ../../bower_components/jquery/dist/jquery.js
 
 // Avoid `console` errors in browsers that lack a console.
@@ -24,4 +25,4 @@
 }());
 
 // Place any jQuery/helper plugins in here.
-//= include ../../bower_components/fitvids/jquery.fitvids.js
+//= include ../../bower_components/svg4everybody/dist/svg4everybody.js

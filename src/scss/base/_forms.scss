@@ -23,6 +23,10 @@ form {
 #{$all-text-inputs},
 textarea {
 	width: 100%;
+
+	@include media($to-large) {
+		font-size: 16px; // oh, iOS
+	}
 }
 
 select {

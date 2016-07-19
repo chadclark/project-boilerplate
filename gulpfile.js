@@ -1,24 +1,28 @@
 // Set Plugin Variables
-var gulp         = require('gulp'); // Gulp!
-var autoprefixer = require('gulp-autoprefixer'); // Auto-prefixer CSS
-var changed      = require('gulp-changed'); // Watch for changed files
-var cheerio      = require('gulp-cheerio'); // Cheerio, good chap!
-var concat       = require('gulp-concat'); // Concat
-var debug        = require('gulp-debug'); // Debug
-var imagemin     = require('gulp-imagemin'); // Image Minifying
-var include      = require('gulp-include'); // Include
-var jshint       = require('gulp-jshint'); // JS Hinting
-var livereload   = require('gulp-livereload'); // Live Reload
-var modernizr    = require('gulp-modernizr'); // Modernizr -- https://github.com/doctyper/gulp-modernizr
-var notify       = require('gulp-notify'); // Notify
-var pngcrush     = require('imagemin-pngcrush'); // PNG Crush
-var plumber      = require('gulp-plumber'); // Gulp Plumber
-var rename       = require('gulp-rename'); // Rename
-var sass         = require('gulp-sass'); // Sass
-var sourcemaps   = require('gulp-sourcemaps'); // Sourcemaps
-var svgstore     = require('gulp-svgstore'); // Combine SVG files into one
-var svgmin       = require('gulp-svgmin'); // Compress SVG files
-var uglify       = require('gulp-uglify'); // Uglify JS
+var gulp          = require('gulp'); // Gulp!
+var autoprefixer  = require('gulp-autoprefixer'); // Auto-prefixer CSS
+var changed       = require('gulp-changed'); // Watch for changed files
+var cheerio       = require('gulp-cheerio'); // Cheerio, good chap!
+var concat        = require('gulp-concat'); // Concat
+var debug         = require('gulp-debug'); // Debug
+var del           = require('del'); // Delete
+var imagemin      = require('gulp-imagemin'); // Image Minifying
+var include       = require('gulp-include'); // Include
+var insert        = require('gulp-insert'); // Insert (prepend and append)
+var jshint        = require('gulp-jshint'); // JS Hinting
+var jshintStylish = require('jshint-stylish');
+var livereload    = require('gulp-livereload'); // Live Reload
+var modernizr     = require('gulp-modernizr'); // Modernizr -- https://github.com/doctyper/gulp-modernizr
+var notify        = require('gulp-notify'); // Notify
+var pngcrush      = require('imagemin-pngcrush'); // PNG Crush
+var plumber       = require('gulp-plumber'); // Gulp Plumber
+var rename        = require('gulp-rename'); // Rename
+var sass          = require('gulp-sass'); // Sass
+var sourcemaps    = require('gulp-sourcemaps'); // Sourcemaps
+var svgstore      = require('gulp-svgstore'); // Combine SVG files into one
+var svgmin        = require('gulp-svgmin'); // Compress SVG files
+var uglify        = require('gulp-uglify'); // Uglify JS
+var watch         = require('gulp-watch'); // Like the built in watch but better
 
 // Set asset path variables
 var paths = {
@@ -60,39 +64,61 @@ gulp.task('jscopy', function() {
 
 // JS Hint
 gulp.task('jshint', function() {
-	gulp.src(paths.js + 'main.js')
-		.pipe(plumber())
+	return gulp.src(paths.js + 'modules/*.js')
 		.pipe(jshint())
-		.pipe(jshint.reporter('default'))
+		.pipe(jshint.reporter(jshintStylish))
+		.pipe(jshint.reporter('fail'));
 });
 
-// File Include
-gulp.task('fileInclude', function() {
-	return gulp.src([
-		paths.js + 'plugins.js',
-		paths.js + 'main.js'
-	])
+// Combine JS Plugins
+gulp.task('combine-js-plugins', ['clean-combine-js-plugins'], function() {
+	return gulp.src(paths.js + 'plugins.js')
 		.pipe(include())
 		.pipe(gulp.dest(paths.js + 'combined/'))
+		.pipe(notify('JS Plugins Combined'))
 	;
+});
+
+gulp.task('clean-combine-js-plugins', function() {
+	del(paths.js + 'combined/plugins.js');
+});
+
+// Combine JS Modules
+gulp.task('combine-js-modules', ['clean-combine-js-modules', 'jshint'], function() {
+	return gulp.src(paths.js + 'modules/*.js')
+		.pipe(concat('modules.js'))
+		.pipe(insert.prepend('$(function() {')) // jQuery Opening tags
+		.pipe(insert.append('});')) // jQuery closing tags
+		.pipe(sourcemaps.write('maps'))
+		.pipe(gulp.dest(paths.js + 'combined/'))
+		.pipe(notify('JS Modules Combined'))
+	;
+});
+
+gulp.task('clean-combine-js-modules', function() {
+	del(paths.js + 'combined/modules.js');
 });
 
 // Concatenate & Minify JS
-gulp.task('scripts', ['jshint', 'fileInclude'], function() {
+gulp.task('build-js', ['combine-js-plugins', 'combine-js-modules', 'clean-build-js'], function() {
 	return gulp.src([
 		paths.js + 'combined/plugins.js',
-		paths.js + 'combined/main.js'
+		paths.js + 'combined/modules.js'
 	])
-		.pipe(concat('production.js'))
-		.pipe(plumber())
 		.pipe(sourcemaps.init())
+		.pipe(plumber())
+		.pipe(concat('production.js'))
 		.pipe(gulp.dest(paths.js))
 		.pipe(rename('production.min.js'))
 		.pipe(uglify())
+		.pipe(sourcemaps.write('maps'))
 		.pipe(gulp.dest(paths.build + 'js/'))
-		.pipe(sourcemaps.write())
 		.pipe(notify('JS Compiled'))
 	;
+});
+
+gulp.task('clean-build-js', function() {
+	del(paths.build + 'js/**.js');
 });
 
 // Modernizr Custom File Builder -- https://github.com/doctyper/gulp-modernizr
@@ -175,9 +201,8 @@ gulp.task('svgSprites', function () {
 
 // Watch
 gulp.task('watch', function() {
-	gulp.watch(paths.js + 'modules/*.js', ['scripts']);
-	gulp.watch(paths.js + 'main.js', ['scripts']);
-	gulp.watch(paths.js + 'plugins.js', ['fileInclude', 'scripts']);
+	gulp.watch(paths.js + 'modules/*.js', ['jshint', 'combine-js-modules', 'build-js']);
+	gulp.watch(paths.js + 'plugins.js', ['combine-js-plugins', 'build-js']);
 	gulp.watch(paths.scss + '**/*.scss', ['styles']);
 	gulp.watch(paths.img + '**/*.*', ['imagemin']);
 	gulp.watch(paths.svg + '**/*.svg', ['svgSprites']);
@@ -186,4 +211,4 @@ gulp.task('watch', function() {
 });
 
 // Default Task
-gulp.task('default', ['jshint', 'styles', 'scripts', 'imagemin', 'svgSprites', 'fileInclude', 'watch']);
+gulp.task('default', ['jshint', 'styles', 'build-js', 'imagemin', 'svgSprites', 'combine-js-plugins', 'combine-js-modules', 'watch']);

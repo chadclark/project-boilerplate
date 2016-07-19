@@ -24,9 +24,18 @@ node_modules
 ####################
 bower_components
 
-# Gulp JS Includes #
-####################
-src/js/combined/*.js
+# Source Maps #
+###############
+public/assets/css/maps
+public/assets/js/maps
+
+# Gulp TMP files/directories #
+##############################
+src/js/production.js
+src/js/combined/*
+!src/js/combined/.gitkeep
+src/js/modules/*
+!src/js/modules/.gitkeep
 
 # DB Sync #
 ###########
