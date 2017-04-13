@@ -1,34 +1,62 @@
 {
-  "name": "gulp-boilerplate",
-  "version": "3.2.0",
-  "description": "Big Gulpin'",
-  "main": "gulpfile.js",
+  "name": "project-boilerplate",
+  "version": "4.0.0",
+  "description": "A front-end boilerplate",
+  "main": "index.js",
+  "repository": "git@github.com:chadclark/project-boilerplate.git",
+  "author": "Chad Clark <chad@chadjclark.com>",
+  "license": "MIT",
+  "private": true,
+  "paths": {
+    "src": {
+      "base": "./src/",
+      "fonts": "./fonts/",
+      "img": "./img/",
+      "js": "./js/",
+      "scss": "./src/scss/"
+    },
+    "dist": {
+      "base": "./public/assets/",
+      "css": "./public/assets/css/",
+      "img": "./public/assets/img/",
+      "fonts": "./public/assets/fonts/",
+      "js": "./public/assets/js/"
+    },
+    "templates": {
+        "path": "./public/",
+        "ext": ".html"
+    }
+  },
+  "urls": {
+    "live": "",
+    "local": "http://projectboilerplate.dev/",
+    "critical": "",
+    "browserSync": "projectboilerplate.dev"
+  },
+  "vars": {
+    "css": "main.css"
+  },
+  "dependencies": {
+    "bourbon": "5.0.0-beta.7",
+    "bourbon-neat": "^2.0.0",
+    "fontfaceobserver": "^2.0.9",
+    "lazysizes": "^3.0.0",
+    "normalize.css": "^6.0.0",
+    "picturefill": "^3.0.2",
+    "svg4everybody": "^2.1.7"
+  },
   "devDependencies": {
-	"del"              : "2.0.0",
-	"gulp"             : "3.9.x",
-	"gulp-autoprefixer": "3.1.0",
-	"gulp-changed"     : "1.3.0",
-	"gulp-cheerio"     : "0.6.2",
-	"gulp-concat"      : "2.6.0",
-	"gulp-debug"       : "2.1.2",
-	"gulp-include"     : "2.2.1",
-	"gulp-imagemin"    : "3.0.1",
-	"gulp-insert"      : "0.5.0",
-	"gulp-jshint"      : "2.0.1",
-	"gulp-livereload"  : "3.8.1",
-	"gulp-modernizr"   : "^1.0.0-alpha",
-	"gulp-newer"       : "1.2.0",
-	"gulp-notify"      : "2.2.0",
-	"gulp-plumber"     : "1.1.0",
-	"gulp-rename"      : "1.2.2",
-	"gulp-sass"        : "2.3.x",
-	"gulp-sourcemaps"  : "^2.0.0-alpha",
-	"gulp-svgstore"    : "6.0.0",
-	"gulp-svgmin"      : "1.2.2",
-	"gulp-uglify"      : "1.5.3",
-	"gulp-watch"       : "4.3.8",
-	"imagemin-pngcrush": "5.0.0",
-	"jshint"           : "2.9.2",
-	"jshint-stylish"   : "2.2.0"
+    "bourbon": "^5.0.0-beta.7",
+    "bourbon-neat": "^2.0.0",
+    "browser-sync": "^2.18.8",
+    "critical": "^0.8.4",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^3.2.0",
+    "gulp-load-plugins": "^1.3.0",
+    "gulp-notify": "^3.0.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.2.1"
   }
 }

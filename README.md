@@ -6,7 +6,6 @@ Project Boilerplate is an automated tool to help get a new website project up an
 
 - NPM ([https://www.npmjs.com/])(https://www.npmjs.com/)
 - Gulp ([http://gulpjs.com/](http://gulpjs.com/))
-- Bower ([http://bower.io/](http://bower.io/))
 
 ## Installation
 
