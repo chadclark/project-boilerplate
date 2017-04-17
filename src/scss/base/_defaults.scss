@@ -1,0 +1,23 @@
+// -----------------------------------------------------------------------------
+// Breakpoints
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// Colors
+// -----------------------------------------------------------------------------
+
+// http://erskinedesign.com/blog/friendlier-colour-names-sass-maps/
+$colors: (
+	default: (
+		black: #000000,
+		white: #FFFFFF,
+	),
+);
+
+@function color($color, $tone: 'base') {
+	@return map-get(map-get($colors, $color), $tone);
+}
+
+$default-body-color      : color(default, black);
+$default-link-color      : color(default, black);
+$default-link-color-hover: color(default, black);

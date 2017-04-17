@@ -1,0 +1,14 @@
+// Fluid Images
+img {
+	display: inline-block;
+	height: auto;
+	margin: 0;
+	padding: 0;
+	max-width: 100%;
+}
+
+// Non-fluid images if you specify `width` and/or `height` attributes.
+img[width],
+img[height] {
+	max-height: none;
+}

@@ -5,7 +5,7 @@
 }
 
 body {
-	background-color: white;
+	color: $default-body-color;
 	font: {
 		family:
 			-apple-system, BlinkMacSystemFont, /* MacOS and iOS */
@@ -23,4 +23,9 @@ body {
 		size: 1em;
 	}
 	font-feature-settings: "liga", "kern", "pnum", "case";
+	margin: 0;
+	padding: 0;
 }
+
+@import "images";
+@import "typography";

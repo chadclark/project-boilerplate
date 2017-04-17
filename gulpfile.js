@@ -30,7 +30,7 @@ gulp.task('browser-sync', function() {
 });
 
 gulp.task('scss', function() {
-	return gulp.src('src/scss/**/*.scss')
+	return gulp.src('src/scss/main.scss')
 		.pipe($.sourcemaps.init())
 		.pipe($.sass({
 			errLogToConsole: false,
