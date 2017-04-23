@@ -20,10 +20,6 @@ Thumbs.db
 ################
 node_modules
 
-# Bower Components #
-####################
-bower_components
-
 # Source Maps #
 ###############
 public/assets/css/maps
@@ -36,7 +32,3 @@ src/js/combined/*
 !src/js/combined/.gitkeep
 src/js/modules/*
 !src/js/modules/.gitkeep
-
-# DB Sync #
-###########
-getdb.sh
