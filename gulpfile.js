@@ -7,6 +7,7 @@ const $ = require('gulp-load-plugins')({
 	scope: ['devDependencies']
 });
 
+const webpackConfig = require('./webpack.config.js');
 const webpackStream = require('webpack-stream');
 const webpack = require('webpack');
 
@@ -31,52 +32,19 @@ const autoprefixerOptions = {
 	cascade: false
 };
 
-const webpackConfig = {
-	watch: true,
-	output: {
-		filename: 'bundle.js',
-	},
-	module: {
-		rules: [
-			{
-				test: /\.js$/,
-				exclude: /node_modules/,
-				use: [
-					{
-						loader: 'babel-loader',
-						options: {
-							presets: [ [
-								'es2015',
-								{
-									'targets': {
-										'browsers': [
-											'last 2 versions',
-											'ie >= 9'
-										]
-									},
-									'loose': true,
-									'modules': false
-								}
-							] ],
-							plugins: [
-								// for IE9
-								// see https://gist.github.com/zertosh/4f818163e4d68d58c0fa
-								'transform-proto-to-assign'
-								// 'transform-object-assign'
-							]
-						}
-					}
-				]
-			}
-		]
-	}
-}
-
 gulp.task('browser-sync', function() {
     return browserSync.init({
 		open: 'external',
 		host: pkg.urls.browserSync,
-        proxy: pkg.urls.browserSync
+        proxy: pkg.urls.browserSync,
+		snippetOptions: {
+	      rule: {
+	        match: /<\/head>/i,
+	        fn: function (snippet, match) {
+	          return snippet + match;
+	        }
+	      }
+	    }
     });
 });
 

@@ -29,9 +29,9 @@
   },
   "urls": {
     "live": "",
-    "local": "http://boilerplate.dev/",
+    "local": "http://projectboilerplate.dev/",
     "critical": "",
-    "browserSync": "boilerplate.dev"
+    "browserSync": "projectboilerplate.dev"
   },
   "vars": {
     "css": "main.css"
@@ -64,6 +64,7 @@
     "gulp-sourcemaps": "^2.2.1",
     "gulp-uglify": "^2.1.2",
     "run-sequence": "^1.2.2",
+    "turbolinks": "^5.0.0",
     "webpack": "^2.4.1",
     "webpack-stream": "^3.2.0"
   }
